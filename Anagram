@@ -1,0 +1,39 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.stream.*;
+import java .util.*;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		String s1="abc";
+		String s2="bac";
+		Boolean areAnaGram=isAnagram(s1,s2);
+		System.out.println("Both Strings are Anagram = "+areAnaGram);
+		
+		
+	}
+	public static boolean isAnagram(String s1,String s2)
+		{
+		    if(s1.length()!=s2.length())
+		        return false;
+		
+		
+/*
+return s1.chars().sorted().mapToObj(c->(char)c).toList()
+		 .equals(s2.chars().sorted().mapToObj(c->(char)c).toList());
+		 */
+		
+			return s1.chars().sorted().mapToObj(c->String.valueOf((char)c)).collect(Collectors.joining())
+		          .equals(s2.chars().sorted().mapToObj(c->String.valueOf((char)c)).collect(Collectors.joining()));
+		
+		 
+		}
+}
